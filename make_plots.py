@@ -4,6 +4,54 @@ import numpy as np
 from scipy import stats
 
 
+def print_auc_ci(labels,scores,title):    
+    '''
+        Uses the Fast DeLong algorithm to estimate the variance of the AUC
+        and estimates the 95% confidence interval (CI) taking +/- 1.96 
+        standard deviation
+
+        Original de DeLong paper
+
+            DeLong, E. R., DeLong, D. M., & Clarke-Pearson, D. L. (1988). 
+            Comparing the areas under two or more correlated receiver operating 
+            characteristic curves: a nonparametric approach. Biometrics, 837-845.
+
+        Fast DeLong algorithmm paper 
+
+            Sun, Xu, and Weichao Xu. "Fast implementation of DeLong’s algorithm 
+            for comparing the areas under correlated receiver operating characteristic 
+            curves." IEEE Signal Processing Letters 21.11 (2014): 1389-1393.
+
+        Library implementing the Fast Delong algorithm
+        
+            https://github.com/yandexdataschool/roc_comparison
+
+    '''
+    import compare_auc_delong_xu
+
+    # estimation of variance using Fast DeLong method
+    auc, var = compare_auc_delong_xu.delong_roc_variance(labels, scores)
+    
+    # lower and upper bounds
+    low = auc - np.sqrt(var)*1.96   # lower bound for 95% confidence level
+    sup = auc + np.sqrt(var)*1.96   # upper bound for 95% confidence level
+
+    # clip the bounds to the [0,1] interval
+    low = np.clip(low,0,1)
+    sup = np.clip(sup,0,1)
+
+    # print the results
+    print('')
+    print('----------------------------------')
+    print(title + ':')
+    print(f'AUCvar (DeLong): {var}')
+    print(f'AUC = {auc} - CI = {low,sup}')
+    print('----------------------------------')
+    print('')
+
+
+
+
 # Samples from the TCGA
 
 keep_primary_only = True
@@ -259,6 +307,10 @@ predicted_scores = lnet + lpdac
 
 fpr, tpr, thresholds = roc_curve(actual_labels, predicted_scores)
 
+# print the AUC estimate with 95% confidence intervals
+print_auc_ci(actual_labels,np.array(predicted_scores),'miRNA 129-5p')
+
+
 # Compute the area under the ROC curve (AUC)
 roc_auc = auc(fpr, tpr)
 
@@ -292,6 +344,10 @@ print(f'Sensitivity: {sensitivity:.3f}, Specificity: {specificity:.3f}, Precisio
 print("miRNA 203a:")
 predicted_scores = lnet2 + lpdac2
 fpr, tpr, thresholds = roc_curve(1-actual_labels, predicted_scores)
+
+# print the AUC estimate with 95% confidence intervals
+print_auc_ci(1-actual_labels,np.array(predicted_scores),'miRNA 203a')
+
 
 # Compute the area under the ROC curve (AUC)
 roc_auc = auc(fpr, tpr)
@@ -340,6 +396,11 @@ lr.fit(X,actual_labels)
 print(f'logit: {lr.coef_},{lr.intercept_}')
 
 fpr, tpr, thresholds = roc_curve(actual_labels, lr.predict_proba(X)[:,1])
+
+
+# print the AUC estimate with 95% confidence intervals
+print_auc_ci(actual_labels,lr.predict_proba(X)[:,1],'COMBINATION OF TWO MIRNA')
+
 
 # Compute the area under the ROC curve (AUC)
 roc_auc = auc(fpr, tpr)
