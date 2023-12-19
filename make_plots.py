@@ -221,8 +221,8 @@ npannet = len(lnet)
 npdac   = len(lpdac)
 
 pos=[1,2,3,5,6,7]
-labels2=[f"PANNET\n129-5p (n={npannet})",f"PDAC\n129-5p (n={npdac})",f"Normal\n129-5p (n={nnorm})",
-         f"PANNET\n203a (n={npannet})",f"PDAC\n203a (n={npdac})",f"Normal\n203a (n={nnorm})"]
+labels2=[f"PANNET\n(n={npannet})",f"PDAC\n(n={npdac})",f"Normal\n(n={nnorm})",
+         f"PANNET\n(n={npannet})",f"PDAC\n(n={npdac})",f"Normal\n(n={nnorm})"]
 plt.figure()
 labels = []
 miviolin([lnet],[pos[0]],"PANNET", color=rrred)
@@ -234,9 +234,8 @@ miviolin([lnorm2],[pos[5]],"Normal", color=greeeen)
 
 
 
-plt.ylabel('percentile normalized expression level')
+plt.ylabel('miRNA percentile normalized expression level')
 plt.xticks([x for x in pos], labels2)
-plt.xticks(rotation=45)
 
 
 # Add multiple comparisons p-value for mean difference -----------
@@ -282,7 +281,10 @@ plt.text(1.5, 105 + pad, asterisk_p_string(r_net_pdac_129.pvalue), fontsize=18, 
 plt.text(2, 105 + hh + pad, asterisk_p_string(r_norm_net_129.pvalue), fontsize=18, va="bottom", ha="center")
 plt.text(5.5, 105 + pad, asterisk_p_string(r_net_pdac_203.pvalue), fontsize=18, va="bottom", ha="center")
 plt.text(6.5, 105 + pad, asterisk_p_string(r_norm_pdac_203.pvalue), fontsize=18, va="bottom", ha="center")
-plt.ylim([0, 120])
+plt.ylim([0, 119.8])
+
+plt.text(2,120,'miR-129-5p',fontsize=20, va="bottom", ha="center")
+plt.text(6,120,'miR-203a',fontsize=20, va="bottom", ha="center")
 
 plt.show()
 
