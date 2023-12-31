@@ -16,8 +16,12 @@ José M Enguita (1), Ignacio Díaz (1), Tamara Cubiella (2,3,4), Diego García (
 Corresponding authors
 N. Valdés nvalga@gmail.com and M.D. Chiara mdchiara.uo@uniovi.es 
 
+### Dependencies
+The packages needed to reproduce the results of the article are listed in `requirements.txt`. Run `pip install -r requirements.txt` to install all packages using pip.
+
 ### Instructions
+
 run `download-gse.py` and `download-tcga.py` (in any order) to download and preprocess data.
 
-run `make-plots.py` to create figures and get the results
+run `python -i make_plots.py` to create figures and get the results
 
