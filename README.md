@@ -18,6 +18,7 @@ N. Valdés nvalga@gmail.com and M.D. Chiara mdchiara.uo@uniovi.es
 
 ### Dependencies
 The packages needed to reproduce the results of the article are listed in `requirements.txt`. 
+
 Run `pip install -r requirements.txt` to install all packages using pip.
 
 ### Instructions
