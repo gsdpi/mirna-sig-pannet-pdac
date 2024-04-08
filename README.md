@@ -15,7 +15,7 @@ Nuria Valdés, MD-PhD (6); José M Enguita, PhD (1); Ignacio Díaz, PhD (1); Tam
 
 
 Corresponding authors
-J.M. Enguita jmenguita@uniovi,es and M.D. Chiara mdchiara.uo@uniovi.es 
+J.M. Enguita jmenguita@uniovi.es and M.D. Chiara mdchiara.uo@uniovi.es 
 
 ### Dependencies
 The packages needed to reproduce the results of the article are listed in `requirements.txt`. 
