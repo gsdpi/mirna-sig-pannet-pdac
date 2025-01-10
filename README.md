@@ -1,5 +1,5 @@
 Supplementary material (code for result reproducibility) for article:
-## Visual Analytics Unveils a Two-miRNA Signature for High-Accuracy Discrimination Between Pancreatic Adenocarcinoma and Well-Differentiated Pancreatic Neuroendocrine Tumors
+## Visual Analytics Unveils a Two-miRNA Signature for High-Accuracy Discrimination Between Pancreatic Adenocarcinoma and Well-Differentiated Pancreatic Neuroendocrine Tumours
 
 ### Authors
 Nuria Valdés, MD-PhD (6); José M Enguita, PhD (1); Ignacio Díaz, PhD (1); Tamara Cubiella, Msc (2,3,4); Diego García, PhD (1); Raúl Rodriguez, MD-PhD (2,5); María Poch, MD (2,5) and María D. Chiara, MD-PhD (2,3,4)
