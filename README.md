@@ -25,3 +25,6 @@ run `download-gse.py` and `download-tcga.py` (in any order) to download and prep
 
 run `python -i make_plots.py` to create figures and get the results
 
+### Funding
+This work was funded in part by Ministerio de Ciencia e Innovación (MCNIN)/Agencia Estatal de Investigación (AEI) (MCIN/AEI/10.13039/501100011033) under Grant PID2020-115401GB-I00.
+
